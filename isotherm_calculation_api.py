@@ -1,14 +1,19 @@
 from flask import Flask, jsonify, request, make_response
+from PIL import Image
 
 app = Flask(__name__)
 
 @app.route("/getisotherm", methods=['POST'])
 def post():
 
-    upload_files = request.files.getlist("file[]")
-    print(f"UPLOAD FILES: {upload_files}")
+    image = request.files.get("image")
+    
+    print(f"UPLOAD FILES: {image}")
 
-    responce = make_response(jsonify({"message": "Succesfull"}), 200,)
-    response.headers["Content-Type"] = "application/json"
+    img = Image.open(image.read())
+    print(f"IMAGE SIZE: {img.size}")
 
-    return response
+    #responce = make_response(jsonify({"message": "Succesfull"}), 200,)
+    #response.headers["Content-Type"] = "application/json"
+
+    return jsonify({"message": "Succesfull"})
