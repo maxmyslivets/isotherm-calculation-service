@@ -14,16 +14,13 @@
 choco install make
 ```
 
-### Create virtual environment in ./ directory
+### Create virtual environment in ./ directory, activate and install requirements
 ```bash
 # your directory for project
 cd C:\Projects\isotherm-calculation-service
 
 py -m venv venv
-```
-
-### Install requirements
-```bash
+venv\Scripts\activate
 pip install -r requirements.txt
 ```
 
