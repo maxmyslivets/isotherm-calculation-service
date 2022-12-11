@@ -1,7 +1,8 @@
-from flask import Flask, request, jsonify
-from PIL import Image
 from base64 import b64decode
-import io
+
+from flask import Flask, request, jsonify
+
+from image_processing.get_isotherm import get_isotherm as processing
 
 
 app = Flask(__name__)
@@ -10,9 +11,9 @@ app = Flask(__name__)
 @app.route("/get_isotherm", methods=["POST"])
 def get_isotherm():
     binary_file = request.form.to_dict()["image"]
-    img = Image.open(io.BytesIO(b64decode(binary_file)))
+    isotherm = processing(b64decode(binary_file))
 
-    return jsonify({'status': 'success', 'size': [img.width, img.height]})
+    return jsonify({'status': 'success', 'isotherm': isotherm.dict})
 
 
 if __name__ == "__main__":
