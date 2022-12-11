@@ -1,5 +1,4 @@
 from dataclasses import FrozenInstanceError
-
 from image_processing.isotherm import Point, Isoline, Isotherm
 
 
@@ -30,7 +29,6 @@ def test_isotherm_isoline():
 
 
 def test_isotherm_isotherm():
-
     data = {
         120: [
             [[1, 1], [2, 2], [3, 3], [4, 4]],
@@ -42,14 +40,11 @@ def test_isotherm_isotherm():
             [[80, 80], [88, 88], [90, 90], [80, 82]]
         ]
     }
-
     isotherm = Isotherm(data)
-
     assert len(isotherm.isolines) == 5
     assert isotherm.__repr__() == f"Isotherm (n=5)"
 
     for level in data.keys():
-        for level_isolines in data[level]:
-            for level_isoline in level_isolines:
-                isoline = Isoline([Point(x, y) for x, y in level_isoline], level)
-                assert isoline in isotherm.isolines
+        for level_isoline in data[level]:
+            isoline = Isoline([Point(x, y) for x, y in level_isoline], level)
+            assert isoline in isotherm.isolines
