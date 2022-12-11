@@ -22,7 +22,7 @@ class Isoline:
 @dataclass
 class Isotherm:
     data: dict
-    isolines: list[Isoline]
+    isolines: list[Isoline] = None
 
     def __post_init__(self) -> None:
         # deserialize data to list[Isoline]
