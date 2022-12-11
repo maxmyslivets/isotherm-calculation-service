@@ -3,17 +3,9 @@
 ### Description .py files
 
 
-#### _server.py_
+#### _api.py_
 
-Starting a server with a post-method on "http://127.0.0.1:3000/im_size", that takes file and return response in json-format
-```json
-{"msg": "success", "size": [1920, 1080]}
-```
-
-
-#### _cl.py_
-
-Send file on "http://127.0.0.1:3000/im_size" and prints response
+Starting a server with a post-method on "http://127.0.0.1:3000/get_isotherm", that takes file and return response in json-format
 
 
 #### _example_page.py_

@@ -36,10 +36,10 @@ venv\Scripts\activate
 
 ### Run server
 ```bash
-make s
+make api
 ```
 
-### Run client for test
+### Run tests
 ```bash
-make c
+pytest
 ```
