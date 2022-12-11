@@ -40,7 +40,12 @@ def test_isotherm_isotherm():
             [[80, 80], [88, 88], [90, 90], [80, 82]]
         ]
     }
-    isotherm = Isotherm(data)
+    isotherm = Isotherm()
+    for level in data.keys():
+        for level_isoline in data[level]:
+            isotherm.isolines.append(
+                Isoline([Point(x, y) for x, y in level_isoline], level))
+
     assert len(isotherm.isolines) == 5
     assert isotherm.__repr__() == f"Isotherm (n=5)"
 
@@ -48,3 +53,5 @@ def test_isotherm_isotherm():
         for level_isoline in data[level]:
             isoline = Isoline([Point(x, y) for x, y in level_isoline], level)
             assert isoline in isotherm.isolines
+
+    assert isotherm.dict == data
