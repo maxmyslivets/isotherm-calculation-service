@@ -12,7 +12,7 @@ def get_isotherm():
     binary_file = request.form.to_dict()["image"]
     img = Image.open(io.BytesIO(b64decode(binary_file)))
 
-    return jsonify({'msg': 'success', 'size': [img.width, img.height]})
+    return jsonify({'status': 'success', 'size': [img.width, img.height]})
 
 
 if __name__ == "__main__":
