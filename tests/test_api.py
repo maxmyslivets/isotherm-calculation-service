@@ -8,6 +8,7 @@ with open('E:/Wall.jpg', 'rb') as file:
 
 def test_get_isotherm_status_code():
 
+    # TODO: get more takes for getting temperatures for all pixels
     response_post = app.test_client().post("/get_isotherm", data={'image': binary_file})
     assert response_post.status_code == 200
 
@@ -17,6 +18,7 @@ def test_get_isotherm_status_code():
 
 def test_get_isotherm_content():
 
+    # TODO: get more takes for getting temperatures for all pixels
     response = app.test_client().post("/get_isotherm", data={'image': binary_file})
 
     assert "status" in response.json.keys()
@@ -24,6 +26,8 @@ def test_get_isotherm_content():
 
 
 def test_get_isotherm_parse():
+
+    # TODO: get more takes for getting temperatures for all pixels
     response = app.test_client().post("/get_isotherm", data={'image': binary_file})
     isotherm = Isotherm(response.json["isotherm"])
 

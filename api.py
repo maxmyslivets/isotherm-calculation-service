@@ -10,7 +10,9 @@ app = Flask(__name__)
 
 @app.route("/get_isotherm", methods=["POST"])
 def get_isotherm():
+
     binary_file = request.form.to_dict()["image"]
+    # TODO: get more takes for getting temperatures for all pixels
     isotherm = processing(b64decode(binary_file))
 
     return jsonify({'status': 'success', 'isotherm': isotherm.dict})
