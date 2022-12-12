@@ -3,7 +3,7 @@ from base64 import b64encode
 import json
 from image_processing.isotherm import Isotherm
 
-with open('E:/Wall.jpg', 'rb') as file:
+with open('tests/media/DJI_0258.JPG', 'rb') as file:
     binary_file = b64encode(file.read())
 
 markers = json.dumps({"m1": [10, 10, 20], "m2": [20, 20, 15], "m3": [25, 25, 21.02]})
