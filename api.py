@@ -1,4 +1,5 @@
 from base64 import b64decode
+import json
 
 from flask import Flask, request, jsonify
 
@@ -12,8 +13,9 @@ app = Flask(__name__)
 def get_isotherm():
 
     binary_file = request.form.to_dict()["image"]
+    markers = json.loads(request.form.to_dict()["markers"])
     # TODO: get more takes for getting temperatures for all pixels
-    isotherm = processing(b64decode(binary_file))
+    isotherm = processing(b64decode(binary_file), markers)
 
     return jsonify({'status': 'success', 'isotherm': isotherm.dict})
 
