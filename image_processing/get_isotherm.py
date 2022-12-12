@@ -1,6 +1,6 @@
 from io import BytesIO
 
-from PIL import Image
+from matplotlib.image import imread
 
 from image_processing.isotherm import Isotherm
 from image_processing.marker import Marker
@@ -8,7 +8,7 @@ from image_processing.marker import Marker
 
 def get_isotherm(image: bytes, markers: dict) -> Isotherm:
 
-    img = Image.open(BytesIO(image))
+    img = imread(BytesIO(image))    # FIXME: read from a url
     markers_ = [Marker(*values) for marker, values in markers.items()]
 
     # TODO: img >> x,y,z arrays from cv
